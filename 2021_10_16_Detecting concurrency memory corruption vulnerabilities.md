@@ -11,7 +11,7 @@ a concurrency vulnerability is more related to the orders of events that can be 
 ##Exiting Methods 的局限性:
 
 Data Race Detector:1. data race关注两个线程同时访问的数据，但并发漏洞可能由多个线程引发。（it is ineffective to apply the approaches for race detection to detect concurrency vulnerabilities. This is because the two concepts are not the same one.）2.没有统一的定义race的规则。3.	false positive高，且遗漏true positive
-![avatar](./img/2021101601)
+![Aaron Swartz](https://raw.githubusercontent.com/Anderson-Xia/Note/main/img/2021101601.png)
 在上图中，传统的race detector会因为p->test()和free(p)都被m加锁而认为其合法，但实际执行中可能先执行完t2中的三个语句再执行t1，从而引发concurrency UAF
 maximal causal models ：受限于求解器，有效性不高
  本文研究对象： 与内存损坏相关的漏洞——use-after-free, NULL pointer dereference, double-free
