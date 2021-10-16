@@ -16,7 +16,7 @@ a concurrency vulnerability is more related to the orders of events that can be 
 2. 没有统一的定义race的规则。
 3.	false positive高，且遗漏true positive
 
-![Aaron Swartz](https://raw.githubusercontent.com/Anderson-Xia/Note/main/img/2021101601.png)
+![limits](https://raw.githubusercontent.com/Anderson-Xia/Note/main/img/2021101601.png)
 
 在上图中，传统的race detector会因为p->test()和free(p)都被m加锁而认为其合法，但实际执行中可能先执行完t2中的三个语句再执行t1，从而引发concurrency UAF
 maximal causal models ：受限于求解器，有效性不高
@@ -24,6 +24,7 @@ maximal causal models ：受限于求解器，有效性不高
 ## 本文研究对象
 
  与内存损坏相关的漏洞——use-after-free, NULL pointer dereference, double-free
-##具体方法
+
+## 具体方法
 
  首先定义了可交换事件，用于判断两个事件的执行顺序是否可逆转（特别的，提到该定义有别于 happens-before（用于判断两个事件的先后顺序, 使用<a href="https://zhuanlan.zhihu.com/p/419944615" target="_blank">Vector Clock</a>可以判断这种关系））随后对三种漏洞类型分别设计检测算法。
