@@ -8,6 +8,8 @@ a concurrency vulnerability is more related to the orders of events that can be 
 
 并引入了第三个事件，两个距离第三事件距离较近的事件彼此更可能交换而引发漏洞
 
+---
+
 ## Exiting Methods 的局限性:
 
 ###Data Race Detector:
@@ -19,7 +21,11 @@ a concurrency vulnerability is more related to the orders of events that can be 
 ![limits](https://raw.githubusercontent.com/Anderson-Xia/Note/main/img/2021101601.png)
 
 在上图中，传统的race detector会因为p->test()和free(p)都被m加锁而认为其合法，但实际执行中可能先执行完t2中的三个语句再执行t1，从而引发concurrency UAF
-maximal causal models ：受限于求解器，有效性不高
+###maximal causal models ：
+
+受限于求解器，有效性不高
+
+---
 
 ## 本文研究对象
 
@@ -28,3 +34,5 @@ maximal causal models ：受限于求解器，有效性不高
 ## 具体方法
 
  首先定义了可交换事件，用于判断两个事件的执行顺序是否可逆转（特别的，提到该定义有别于 happens-before（用于判断两个事件的先后顺序, 使用<a href="https://zhuanlan.zhihu.com/p/419944615" target="_blank">Vector Clock</a>可以判断这种关系））随后对三种漏洞类型分别设计检测算法。
+
+ 本文采用如下图所示算法判断可交换事件
