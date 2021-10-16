@@ -29,10 +29,32 @@ a concurrency vulnerability is more related to the orders of events that can be 
 
 ## 本文研究对象
 
- 与内存损坏相关的漏洞——use-after-free, NULL pointer dereference, double-free
+ 与内存损坏相关的漏洞
+ 1. use-after-free
+ 2. NULL pointer dereference
+ 3. double-free
 
 ## 具体方法
 
- 首先定义了可交换事件，用于判断两个事件的执行顺序是否可逆转（特别的，提到该定义有别于 happens-before（用于判断两个事件的先后顺序, 使用<a href="https://zhuanlan.zhihu.com/p/419944615" target="_blank">Vector Clock</a>可以判断这种关系））随后对三种漏洞类型分别设计检测算法。
+ 首先定义了可交换事件，用于判断两个事件的执行顺序是否可逆转（特别的，提到该定义有别于 happens-before（用于判断两个事件的先后顺序, 使用<a href="https://zhuanlan.zhihu.com/p/419944615" target="_blank">Vector Clock</a>可以判断这种关系））
+ 
+ 随后对三种漏洞类型分别设计检测算法。
+
+ 使用同步距离来量化两个事件交换的可行性,同一进程内部的一对加锁到解锁是一条同步边，不同进程见解锁到加锁是一条同步边。两事件间含有最少同步边的路径上的同步边数即为其同步距离。
+>A sync-edge (⇒) is an edge either 
+> 
+> (1) from an event acq(m) to its paired event rel(m) in the same thread
+>
+>(2) from an event rel(m) to a later event acq(m) by two different threads. 
+> 
+>Based on sync-edge, we define the sync-distance (or distance for short) of two event e1 and e2 as the minimal number of sync-edges that order the two events, denoted as D(e1, e2).
+
+在同步距离的基础上，作者提出了松弛可交换事件——若两事件不存在HPR（happens-before relation），其可交换。反之，若其同步距离小于3，在本文中也视为（松弛）可交换
 
  本文采用如下图所示算法判断可交换事件
+
+ ![algorithm](https://raw.githubusercontent.com/Anderson-Xia/Note/main/img/2021101602.png)
+ 
+在如图所示算法中，6-8行判断可交换事件，9-18行判断松弛可交换事件。为判断同步距离是否不大于3，实际上是要判断不同线程中的两事件e1和e2间是否只存在一条同步边。（注意，因为e1,e2存在HPR，所以e1后必定存在一条rel(l)边，e2前必定存在一条acq(l)边,这样才会构成HPR关系，考虑到总同步边数不大于3，则rel(l)和acq(l)间只允许存在一条）
+
+为了实现上图所示的判断，本文在e1释放锁l时维护l的VC（vector clock），命名为PredVC(e1)，并检查e2发生时PredVC(e1)与VC(l)是否一致，如果一致，则说明e1,e2间没有发生有关l的同步事件，则同步距离为3。
