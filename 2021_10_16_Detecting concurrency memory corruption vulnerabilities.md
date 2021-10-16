@@ -26,4 +26,4 @@ maximal causal models ：受限于求解器，有效性不高
  与内存损坏相关的漏洞——use-after-free, NULL pointer dereference, double-free
 ##具体方法
 
- 首先定义了可交换事件，用于判断两个事件的执行顺序是否可逆转（特别的，提到该定义有别于 happens-before（用于判断两个事件的先后顺序, 使用Vector Clock可以判断这种关系））随后对三种漏洞类型分别设计检测算法。
+ 首先定义了可交换事件，用于判断两个事件的执行顺序是否可逆转（特别的，提到该定义有别于 happens-before（用于判断两个事件的先后顺序, 使用<a href="https://zhuanlan.zhihu.com/p/419944615" target="_blank">Vector Clock</a>可以判断这种关系））随后对三种漏洞类型分别设计检测算法。
