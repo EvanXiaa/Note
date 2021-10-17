@@ -58,3 +58,4 @@ a concurrency vulnerability is more related to the orders of events that can be 
 在如图所示算法中，6-8行判断可交换事件，9-18行判断松弛可交换事件。为判断同步距离是否不大于3，实际上是要判断不同线程中的两事件e1和e2间是否只存在一条同步边。（注意，因为e1,e2存在HPR，所以e1后必定存在一条rel(l)边，e2前必定存在一条acq(l)边,这样才会构成HPR关系，考虑到总同步边数不大于3，则rel(l)和acq(l)间只允许存在一条）
 
 为了实现上图所示的判断，本文在e1释放锁l时维护l的VC（vector clock），命名为PredVC(e1)，并检查e2发生时PredVC(e1)与VC(l)是否一致，如果一致，则说明e1,e2间没有发生有关l的同步事件，则同步距离为3。
+
