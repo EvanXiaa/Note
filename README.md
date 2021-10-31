@@ -1,4 +1,6 @@
 # Note
+[2021.10.31] a spider for collecting CVE from 2014-now(by default) with key word 'race' and the result
+
 [2021.10.20] An Overview of JS Engine Fuzzing 
 
 [2021.10.18] Detecting Concurrency Vulnerabilities Based on Partial Orders of Memory and Thread Events(FSE 2021)
