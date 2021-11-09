@@ -1,4 +1,6 @@
 # Note
+[2021.11.09] [EnFuzz: Ensemble Fuzzing with Seed Synchronization among Diverse Fuzzers](https://github.com/Anderson-Xia/Note/blob/main/2021_11_9/2021_11_9.md)
+
 [2021.11.02]  [An Overview of three concurrency fuzzer(In fact dynamic validation)](https://github.com/Anderson-Xia/Note/blob/main/2021_11_2/2021_11_2.md)
 
 [2021.10.31] [a spider for collecting CVE from 2014-now(by default) with key word 'race' and the result](https://github.com/Anderson-Xia/Note/blob/main/2021_10_31/2021_10_31.md)
