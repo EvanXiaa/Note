@@ -3,8 +3,6 @@
 
 [2021.05.15][The Use of Likely Invariants as Feedback for Fuzzers](https://github.com/Anderson-Xia/Note/blob/main/2022_05_15/likely_invariants.pptx)
 
-[2021.05.15][The Use of Likely Invariants as Feedback for Fuzzers](https://github.com/Anderson-Xia/Note/blob/main/2022_0515/likely_invariants.pptx)
-
 [2021.12.08] [An Overview of Parallel Fuzzing](https://github.com/Anderson-Xia/Note/blob/main/2021_12_8/Parallel_Fuzzing.pdf)
 
 [2021.11.09] [EnFuzz: Ensemble Fuzzing with Seed Synchronization among Diverse Fuzzers](https://github.com/Anderson-Xia/Note/blob/main/2021_11_9/2021_11_9.md)
