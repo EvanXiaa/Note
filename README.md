@@ -1,7 +1,7 @@
 # Note
-[2021.05.15][Semantic-Informed Driver Fuzzing Without Both the Hardware Devices and the Emulators](https://github.com/Anderson-Xia/Note/blob/main/2022_0515/device-free-fuzzing.pptx)
+[2021.05.15][Semantic-Informed Driver Fuzzing Without Both the Hardware Devices and the Emulators](https://github.com/Anderson-Xia/Note/blob/main/2022_05_15/device-free-fuzzing.pptx)
 
-[2021.05.15][The Use of Likely Invariants as Feedback for Fuzzers](https://github.com/Anderson-Xia/Note/blob/main/2022_0515/likely_invariants.pptx)
+[2021.05.15][The Use of Likely Invariants as Feedback for Fuzzers](https://github.com/Anderson-Xia/Note/blob/main/2022_05_15/likely_invariants.pptx)
 
 [2021.05.15][The Use of Likely Invariants as Feedback for Fuzzers](https://github.com/Anderson-Xia/Note/blob/main/2022_0515/likely_invariants.pptx)
 
